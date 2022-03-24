@@ -2,13 +2,14 @@ import os
 import sys
 import logging
 import argparse
+import getpass
  
 msg = "Credentials for CSPC entered at runtime"
  
 # Initialize parser
 parser = argparse.ArgumentParser(description = msg)
 parser.add_argument("-u", "--username", help = "CSPC Username", required=True)
-parser.add_argument("-p", "--password", help = "CSPC PW", required=True)
+parser.add_argument("-p", "--password", help = "CSPC PW")
 args = parser.parse_args()
 
 #Import cspc_api using the directory one level up as root
@@ -19,10 +20,11 @@ from cspc_api import CspcApi
 
 format = "%(asctime)s %(name)10s %(levelname)8s: %(message)s"
 logfile="../cspc_update.log"
-logging.basicConfig(format=format, level=logging.DEBUG,
-                    datefmt="%H:%M:%S", filename=logfile)
+logging.basicConfig(format=format, level=logging.DEBUG, filename=logfile)
 
 
+if not args.password:
+    args.password = getpass.getpass()
 
 
 cspc_user = args.username
@@ -46,7 +48,7 @@ devices = [
         'PrimaryDeviceName': 'testhostname2.example.com',
     },
 ]
-# print(cspc.add_multiple_devices(devices, return_json=True))
-# devices = {"testhostname1", "testhostname2"}
-# devices_to_del = cspc.get_devices_by(value=devices)
-# print(cspc.delete_multiple_devices(devices_to_del, return_json=True))
+print(cspc.add_multiple_devices(devices, return_json=True))
+devices = {"testhostname1", "testhostname2"}
+devices_to_del = cspc.get_devices_by(key="Ip", value=devices)
+print(cspc.delete_multiple_devices(devices_to_del, return_json=True))
