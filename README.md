@@ -13,7 +13,7 @@ More information can be found at [CSPC Install and Upgrade Guides](https://www.c
 ## Installation
 
 ```
-git clone https://github.com/lumean/cisco-cspc.git
+git clone https://github.com/coleyr/cspc_api.git
 cd cisco-cspc
 pip install -r requirements.txt
 ```
