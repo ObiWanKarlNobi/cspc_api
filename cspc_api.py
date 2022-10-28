@@ -466,6 +466,18 @@ class CspcApi:
             return json.dumps(self.xml_to_json_elem(request))
         return request
 
+    def discover_multiple_devices(self, ips, return_json=False):
+        tree = ElementTree.fromstring(self._get_xml_payload('discover_multiple_devices.xml'))
+        device_list = self._get_xml_elem('IPAddressList', tree)
+        for ip in ips:
+            elem = ElementTree.Element('IPAddress')
+            elem.text = ip
+            device_list.append(elem)
+        request = self._xml(ElementTree.tostring(tree, encoding='unicode'))
+        if return_json:
+            return json.dumps(self.xml_to_json_elem(request))
+        return request
+
     def delete_multiple_devices(self, device_array, return_json = False):
         """ Deletes multiple devices by ID from CSPC
 
