@@ -36,7 +36,7 @@ print(cspc.get_devices(return_json=True))
 
 devices = [
     { 
-        'HostName': 'CAaaS_SW', 
+        'HostName': 'CAaaS_SW',     
         'IPAddress': '172.18.176.74', 
         'DomainName': 'testhostname1.example.com', 
         'PrimaryDeviceName': 'testhostname1.example.com',
@@ -49,6 +49,9 @@ devices = [
     },
 ]
 print(cspc.add_multiple_devices(devices, return_json=True))
+
 devices = {"testhostname1", "testhostname2"}
-devices_to_del = cspc.get_devices_by(key="Ip", value=devices)
+devices_to_del = cspc.get_devices_by(key="Id", value=devices)
 print(cspc.delete_multiple_devices(devices_to_del, return_json=True))
+
+discoverDevices = ['172.18.176.74','1.2.3.5']
