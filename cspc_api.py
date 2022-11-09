@@ -467,8 +467,11 @@ class CspcApi:
         return request
 
     def discover_multiple_devices(self, ips, return_json=False):
+        ts = time.time()
         tree = ElementTree.fromstring(self._get_xml_payload('discover_multiple_devices.xml'))
         device_list = self._get_xml_elem('IPAddressList', tree)
+        job = self._get_xml_elem('DiscoveryJob', tree)
+        job.set('identifier', str(int(ts)))
         for ip in ips:
             elem = ElementTree.Element('IPAddress')
             elem.text = ip
