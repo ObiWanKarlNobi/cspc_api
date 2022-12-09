@@ -127,7 +127,8 @@ class CspcApi:
         for xml in list_of_xml:
             json_data.append(self.xml_to_json_elem(xml))
         # convert into json
-        final = json.dumps(json_data, indent=2)
+        temp = json.dumps(json_data, indent=2)
+        final = json.loads(temp)
         return final
     
     def xml_to_json_elem(self, xml: ElementTree or str):
