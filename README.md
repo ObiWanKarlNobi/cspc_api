@@ -13,7 +13,7 @@ More information can be found at [CSPC Install and Upgrade Guides](https://www.c
 ## Installation
 
 ```
-git clone https://github.com/coleyr/cspc_api.git
+git clone https://github.com/ObiWanKarlNobi/cspc_api.git
 cd cisco-cspc
 pip install -r requirements.txt
 ```
@@ -42,7 +42,7 @@ See also [Examples](examples/)
 
 ## How to test the software
 
-Tested agains CSPC version 2.9. 
+Tested agains CSPC version 2.9 and 2.10.
 
 For testing download and setup CSPC as VM.
 
@@ -66,3 +66,4 @@ Currently missing:
 This project was written and is maintained by the following individuals:
 
 * Manuel Widmer <mawidmer@cisco.com>
+* Karl Doerr <kdoerr@cisco.com>
